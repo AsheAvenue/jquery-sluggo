@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.source,
+		.target {
+			width: 100px;
+			border: 1px solid #333;
+			background-color: #fff;
+			height: 18px;
+			margin-bottom: 10px;
+			padding: 0 5px;
+			font: normal 14/1.4 helvetica, arial, sans-serif;
+		}
+
+		.target {
+			background-color: #ddd;
+		}
+
+	</style>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="jquery.sluggo.js"></script>
+
+	<script type="text/javascript">
+
+	$( document ).ready(function() {
+
+    	//$('.source').sluggo('.target');
+
+    	$('.source').sluggo({
+			target:  	".target",
+			spacer: 	"_",
+			prefix:  	"",
+			suffix:  	"",
+			ext:     	"",
+			date: 		""
+		});
+
+
+	});
+
+	</script>
+</head>
+<body>
+	<input type="text" class="source">
+	<div class="target"></div>
+</body>
+</html>
