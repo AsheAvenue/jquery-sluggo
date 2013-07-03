@@ -28,45 +28,52 @@
 		}
 
 		function reString( value ) {
-				value = value.toLowerCase();
+            
+            // Drop the source text to lowercase and trim it (in order to prevent a slug 
+            // from starting or ending with the spacer character)
+			value = value.toLowerCase().trim();
+            
+            // Replace all multi-space sections with a single space
+            value = value.replace(/ +(?= )/g,''); 
 
-				// General Replacement - anything that isn't an alphnumeric
-				value = value.replace(/[^a-z0-9]/g, opts.spacer);
+			// General Replacement - anything that isn't an alphnumeric
+			value = value.replace(/[^a-z0-9]/g, opts.spacer);
 
-				// Date string generator
-				if (opts.date) {
-					if (typeof opts.date == "boolean") {
-						var dSpace = "";
-					} else {
-						var dSpace = opts.date;
-					}
-					var d = new Date();
-					var strDate = d.getFullYear() + dSpace + ("0" + (d.getMonth() + 1)).slice(-2) + dSpace + ("0" + d.getDate()).slice(-2);
+			// Date string generator
+			if (opts.date) {
+				if (typeof opts.date == "boolean") {
+					var dSpace = "";
 				} else {
-					var strDate = "";
+					var dSpace = opts.date;
 				}
+				var d = new Date();
+				var strDate = d.getFullYear() + dSpace + ("0" + (d.getMonth() + 1)).slice(-2) + dSpace + ("0" + d.getDate()).slice(-2);
+			} else {
+				var strDate = "";
+			}
 
-				// prefix, suffix, date, extension
-				value = opts.prefix + value + opts.suffix + strDate + opts.ext;
+			// prefix, suffix, date, extension
+			value = opts.prefix + value + opts.suffix + strDate + opts.ext;
 
-				return value;
+	        return value;
 		}
 
 		// detect any change to the source, parse it, insert it into the target (replaces any existing content).
     	this.keyup(function(e){
-   			$(target).text(reString(e.target.value));
+   			$(target)[opts.jQueryFillMethod](reString(e.target.value));
 		});
 	    return this;
 	};
 
 	// defaults, edit here at your peril.
 	$.fn.sluggo.defaults = {
-		target:  	"",
-		spacer: 	"_",
-		prefix:  	"",
-		suffix:  	"",
-		ext:     	"",
-		date: 		false
+		target:  	        "",
+		spacer: 	        "-",
+		prefix:  	        "",
+		suffix:  	        "",
+		ext:     	        "",
+		date: 		        false,
+		jQueryFillMethod:   "val"
 	};
 
 }( jQuery ));
