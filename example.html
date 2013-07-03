@@ -28,14 +28,14 @@
     	//$('.source').sluggo('.target');
 
     	$('.source').sluggo({
-			target:  	".target",
-			spacer: 	"_",
-			prefix:  	"",
-			suffix:  	"",
-			ext:     	"",
-			date: 		""
+			target:  			".target",
+			spacer: 			"-",
+			prefix:  			"",
+			suffix:  			"",
+			ext:     			"",
+			date: 				"",
+			jQueryFillMethod:   "val"
 		});
-
 
 	});
 
@@ -43,6 +43,6 @@
 </head>
 <body>
 	<input type="text" class="source">
-	<div class="target"></div>
+	<input type="text" class="target" readonly>
 </body>
 </html>
