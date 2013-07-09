@@ -18,8 +18,7 @@ Result: The value in the source text field is slugified and added as the value t
         ext:                "",     // File extention, none by default. Include a spacer if desired, e.g.: ".txt".
         date:               false   // False is default, true is unspaced YYYMMDD. Anything in quotes, e.g. "-" is true AND the date-only spacer.
         jQueryFillMethod:   "val"   // The jQuery method used to set the value on the target object. jQuery's "val()" function is the default
-        makeTargetReadonly: false   // False is default. True turns the target readonly if it's a form input.
-        
+        makeTargetReadonly: false   // False is default. True turns the target readonly if it's a form input. 
     });
 
 ## License and Credits
