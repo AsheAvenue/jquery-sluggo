@@ -25,16 +25,17 @@
 
 	$( document ).ready(function() {
 
-		//$('.source').sluggo('.target');
+		$('#example1_source').sluggo('#example1_target');
 
-		$('.source').sluggo({
-			target:             ".target",
-			spacer:             "-",
-			prefix:             "",
-			suffix:             "",
+		$('#example2_source').sluggo({
+			target:             "#example2_target",
+			spacer:             "_",
+			prefix:             "prefix_",
+			suffix:             "_suffix",
 			ext:                "",
 			date:               "",
-			jQueryFillMethod:   "val"
+			jQueryFillMethod:   "val",
+            makeTargetReadonly: true, 
 		});
 
 	});
@@ -42,7 +43,24 @@
 	</script>
 </head>
 <body>
-	<input type="text" class="source">
-	<input type="text" class="target" readonly>
+    <div>
+        <div>
+            <h2>Simple example</h2>
+        </div>
+        <div>
+        	<input type="text" id="example1_source" placeholder="Source" size="50">
+        	<input type="text" id="example1_target" placeholder="Target" size="50">
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div>
+            <h2>Advanced example</h2>
+        </div>
+        <div>
+        	<input type="text" id="example2_source" placeholder="Source" size="50">
+        	<input type="text" id="example2_target" placeholder="Target" size="50">
+        </div>
+    </div>
 </body>
 </html>

@@ -15,6 +15,7 @@
 //  ext:                "",     // File extention, none by default. Include a spacer if desired, e.g.: ".txt".
 //  date:               false   // False is default, true is unspaced YYYMMDD. Anything in quotes, e.g. "-" is true AND the date-only spacer.
 //  jQueryFillMethod:   "val"   // Default is for input->input use. Switch to 'text' for input->div (or other non-editable fields).
+//  makeTargetReadonly: false   // False is default. True turns the target readonly if it's a form input.
 // });
 
 (function ( $ ) {
@@ -23,14 +24,19 @@
 		// override defaults
 		var opts = $.extend( {}, $.fn.sluggo.defaults, options );
 
-		// allow a simple selector to be passed as the target
+        // allow a simple selector to be passed as the target
 		if (typeof options == "string") {
 			var target = options;
 		}  else {
 			var target = options.target;
 		}
 
-		function reString( value ) {
+        //set the target as readonly if makeTargetReadonly is true
+        if (opts.makeTargetReadonly == true) {
+            $(target).prop("readonly", true);
+        }
+		
+        function reString( value ) {
 
 			// Drop the source text to lowercase and trim it (in order to prevent a slug
 			// from starting or ending with the spacer character)
@@ -76,7 +82,8 @@
 		suffix:             "",
 		ext:                "",
 		date:               false,
-		jQueryFillMethod:   "val"
+		jQueryFillMethod:   "val",
+        makeTargetReadonly: false, 
 	};
 
 }( jQuery ));
